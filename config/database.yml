@@ -21,6 +21,9 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
+  host: localhost
+  username: pguser
+
 development:
   <<: *default
   database: My_facebook_development
