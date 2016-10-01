@@ -1,0 +1,36 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :first_name, class: "sr-only" %><br />
+    <%= f.text_field :first_name, autofocus: true, id: "inputEmail",
+                                          class: " signin-field",  placeholder: "First name" %>
+    <%= f.text_field :last_name, autofocus: true, id: "inputEmail",
+                                          class: " signin-field",  placeholder: "Last name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, class: "sr-only" %><br />
+    <%= f.email_field :email, autofocus: true, id: "inputEmail",
+                                          class: " signin-field-whide",  placeholder: "Email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, class: "sr-only" %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off", id: "inputPassword",
+                                          class: "signin-field-whide", placeholder: "Password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, class: "sr-only"  %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", id: "inputPassword",
+                              class: "signin-field-whide", placeholder: "Password confirmation" %>
+  </div><br>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: "btn btn-lg btn-success" %>
+  </div>
+<% end %>

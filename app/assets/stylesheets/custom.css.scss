@@ -10,6 +10,7 @@
     display: inline-block;
     margin-bottom: 0;
   }
+
   .log_label {
     color: #fff;
     margin-top:  5px;
@@ -32,7 +33,12 @@
     text-decoration: none;
   }
 
+}
 
+.SignUp {
+  text-align: center;
+}
 
-
+.signin-field-whide {
+  width: 380px;
 }
