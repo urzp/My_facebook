@@ -1,0 +1,15 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name),  html: {class: 'form-inline'} ) do |f| %>
+  <div class="form-login">
+    <%= f.label :email, class: "log_label" %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="form-login">
+    <%= f.label :password, class: "log_label" %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="form-login">
+    <%= f.submit "Log in"%>
+  </div>
+<% end %>
