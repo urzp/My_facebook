@@ -3,7 +3,11 @@
     <%= link_to "My_facebook", root_path, id: "logo" %>
     <nav>
       <ul class="nav  navbar-right">
-        <%= render 'layouts/log_in' %>
+        <% if user_signed_in? %>
+        <%= render 'layouts/log_out' %>
+        <% else %>
+        <%= render 'layouts/log_in' if @index %>
+        <% end %>
       </ul>
     </nav>
   </div>

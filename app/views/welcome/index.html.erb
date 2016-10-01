@@ -1,5 +1,8 @@
+<% if user_signed_in? %>
+<% else %>
 <div class = "SignUp">
   <h1>Sign Up</h1>
     <h5> It's free and always will be. </h5>
-  <%= render 'layouts/sign_up' %>
+      <%= render 'layouts/sign_up' %>
 </div>
+<% end %>
