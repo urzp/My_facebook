@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "paperclip", "~> 5.0.0"
+
 gem 'bootstrap-sass',	'3.2.0.0'
 
 gem 'devise'
