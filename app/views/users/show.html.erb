@@ -1,0 +1,11 @@
+<div style = "text-align : left; margin: 20px;">
+
+  <% User.all.each do |user| %>
+     <%= image_tag user.avatar.url(:thumb) %>
+      <%= "#{user.first_name} #{user.last_name}" %>
+      <%= user.email %>
+      <br>
+
+  <% end %>
+
+</div>
