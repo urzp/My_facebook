@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resource :users, only: [:show, :edit]
+  resource :users
   devise_for :users
   root 'welcome#index'
 

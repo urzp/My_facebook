@@ -1,0 +1,45 @@
+<div style = "text-align : left; margin: 20px;">
+<%= devise_error_messages! %>
+<h1>Edit Profile</h1>
+
+<%= image_tag @user.avatar.url(:medium) %>
+
+<%= form_for(@user, url: users_path ) do |f| %>
+
+<%= hidden_field_tag :format, @user.id %>
+
+<%= f.file_field :avatar %>
+
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name, autofocus: true,
+                                          class: "signin-field",  value: @user.first_name %>
+    <br>
+    <%= f.label :Last_name %>
+    <br>
+    <%= f.text_field :last_name, autofocus: true,
+                                          class: " signin-field",  value: @user.last_name  %>
+  </div>
+
+  <br>
+  <%= f.label :gender %>
+  <%= f.select :gender, options_for_select(["Male", "Female"]), value: @user.gender  %><br/>
+
+  <br>
+  <%= f.label :birthday %>
+	<%= f.date_select :birthday, start_year: 1910 %><br/>
+  <br>
+
+  <br>
+  <%= f.label :location %>
+  <br>
+  <%= f.text_field :location, autofocus: true,
+                                        class: " signin-field", value:  @user.location %>
+
+  <br>
+  <br>
+  <%= f.submit "Update" %>
+
+<% end %>
+</div>
