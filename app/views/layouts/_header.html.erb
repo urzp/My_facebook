@@ -4,6 +4,7 @@
     <nav>
       <ul class="nav  navbar-right">
         <% if user_signed_in? %>
+        
         <%= render 'layouts/log_out' %>
         <% else %>
         <%= render 'layouts/log_in' if @index %>
