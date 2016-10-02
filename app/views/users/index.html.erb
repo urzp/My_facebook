@@ -1,0 +1,17 @@
+
+<div style = "text-align : left; margin: 20px;">
+
+  <% @users.each do |user| %>
+  <br>
+<div>
+     <%= image_tag user.avatar.url(:thumb) %>
+      <%= "#{user.first_name} #{user.last_name}" %>
+      <%= user.email %>
+      <%= link_to "Show", show_users_path(user)  %>
+
+</div>
+
+      <br>
+  <% end %>
+
+</div>

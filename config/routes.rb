@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   resource :users
+
+  match 'users/:id/show',  to: 'users#show',            via: 'get' , as: :show_users
+  match 'users/index',  to: 'users#index',            via: 'get'
+
   devise_for :users
   root 'welcome#index'
 
