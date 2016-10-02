@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resource :users
+  resource :users, only: [:edit, :update]
 
   match 'users/:id/show',  to: 'users#show',            via: 'get' , as: :show_users
   match 'users/index',  to: 'users#index',            via: 'get'
