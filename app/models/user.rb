@@ -50,4 +50,8 @@ class User < ActiveRecord::Base
     User.where("id IN (#{inventes})", user_id: self.id )
   end
 
+  def relationship?(user)
+    self.wish_frends.any?{|u| u == user } or self.inv_frends.any?{|u| u == user }
+  end
+
 end
