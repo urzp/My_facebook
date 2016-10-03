@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20161003084624) do
   create_table "relationships", force: :cascade do |t|
     t.integer  "wish_id"
     t.integer  "inv_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "accepted",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "relationships", ["inv_id"], name: "index_relationships_on_inv_id", using: :btree

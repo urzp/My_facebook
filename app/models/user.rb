@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
   has_many	:reverse_relationships,	foreign_key: "inv_id",
                       class_name: "Relationship",  dependent:			:destroy
 
+  def accept_inv(user)
+    self.reverse_relationships.find_by(wish_id: user.id).accepted = true
+  end
+
 end

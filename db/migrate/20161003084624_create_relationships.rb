@@ -3,6 +3,7 @@ class CreateRelationships < ActiveRecord::Migration
     create_table :relationships do |t|
       t.integer :wish_id
       t.integer :inv_id
+      t.boolean :accepted, default: false
 
       t.timestamps null: false
     end
