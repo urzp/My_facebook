@@ -1,3 +1,14 @@
-<%= image_tag @user.avatar.url(:thumb) %>
- <%= "#{@user.first_name} #{@user.last_name}" %>
+
+<h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
+<br>
+<br>
+<%= image_tag @user.avatar.url(:medium) %>
+<br>
+
+ <br>
  <%= @user.email %>
+ <br>
+ <br>
+ <p><b>Gender: </b><%= current_user.gender %></p>
+ <p><b>Location:</b> <%= current_user.location %></p>
+ <p><b>Birthdate:</b> <%= current_user.birthday %></p>
