@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resource :users, only: [:edit, :update]
+  resource :users, only: [:edit, :update] do
+    member	do
+      get :wish_frend, :del_wish_frend
+      get :accept_frend, :not_accept_frend
+    end
+  end
 
   match 'users/:id/show',  to: 'users#show',            via: 'get' , as: :show_users
   match 'users/index',  to: 'users#index',            via: 'get'

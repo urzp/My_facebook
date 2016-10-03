@@ -22,8 +22,8 @@ require 'rails_helper'
     end
 
     it "shoud return inv_frends" do
-      user1 = User.new(id:1)
-      user2 = User.new(id:2)
+      user1 = User.new
+      user2 = User.new
       user1.wish_frends << user2
       user1.save
       user2.save
