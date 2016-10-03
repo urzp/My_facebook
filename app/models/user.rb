@@ -17,7 +17,37 @@ class User < ActiveRecord::Base
                       class_name: "Relationship",  dependent:			:destroy
 
   def accept_inv(user)
-    self.reverse_relationships.find_by(wish_id: user.id).accepted = true
+    relation = self.reverse_relationships.find_by(wish_id: user.id)
+    relation.accepted = true
+    relation.save
+  end
+
+  def delete_inv(user)
+    self.inv_frends.delete(user.id)
+  end
+
+  def delete_wish(user)
+    self.wish_frends.delete(user.id)
+  end
+
+  def frends
+    friendships = "SELECT wish_id FROM relationships WHERE inv_id = :user_id
+						AND accepted = true"
+    reverse_friendships = "SELECT inv_id FROM relationships WHERE wish_id = :user_id
+        		AND accepted = true"
+    User.where("id IN (#{friendships}) OR id IN (#{reverse_friendships})", user_id: self.id)
+  end
+
+  def current_wishes
+    wishes = "SELECT inv_id FROM relationships WHERE wish_id = :user_id
+            AND accepted = false"
+    User.where("id IN (#{wishes})", user_id: self.id )
+  end
+
+  def current_inventes
+    inventes = "SELECT wish_id FROM relationships WHERE  inv_id = :user_id
+            AND accepted = false"
+    User.where("id IN (#{inventes})", user_id: self.id )
   end
 
 end
