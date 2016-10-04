@@ -51,7 +51,12 @@ class User < ActiveRecord::Base
   end
 
   def relationship?(user)
-    self.wish_frends.any?{|u| u == user } or self.inv_frends.any?{|u| u == user }
+    return :wish if self.current_wishes.any?{|u| u == user }
+    return :invit if self.current_inventes.any?{|u| u == user }
+    return :frend if self.frends.any?{|u| u == user }
+    return nil
   end
+
+
 
 end
