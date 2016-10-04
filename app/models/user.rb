@@ -30,6 +30,11 @@ class User < ActiveRecord::Base
     self.wish_frends.delete(user.id)
   end
 
+  def delete_realtionship(user)
+    delete_wish(user) if self.wish_frends.any?{|u| u == user }
+    delete_inv(user) if self.inv_frends.any?{|u| u == user }
+  end
+
   def frends
     friendships = "SELECT wish_id FROM relationships WHERE inv_id = :user_id
 						AND accepted = true"

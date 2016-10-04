@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resource :relationships, only: [:create, :destroy]
+
   resource :users, only: [:edit, :update] do
     member	do
       get :wish_frend, :del_wish_frend
