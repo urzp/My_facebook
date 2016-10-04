@@ -12,28 +12,5 @@
  <p><b>Gender: </b><%= current_user.gender %></p>
  <p><b>Location:</b> <%= current_user.location %></p>
  <p><b>Birthdate:</b> <%= current_user.birthday %></p>
- <div	id="relationship_form">
-   <% @relationship = current_user.relationship?(@user) %>
-   <% if @relationship == nil %>
-    <% @label = "invite friend"  %>
-    <%=	render	'add_friend'	%>
-    <% else %>
-    <% if @relationship == :invit %>
-    <div>
-      <% @label = "accept friend"  %>
-      <div><%=	render	'accept_friend'	%></div>
-      <% @label = "deny friend"  %>
-      <div><%=	render	'delete_relationship'	%></div>
-    </div>
-    <% end %>
-    <% if @relationship == :frend %>
-      <% @label = "deny friend"  %>
-      <%=	render	'delete_relationship'	%>
-    <% end %>
-    <% if @relationship == :wish %>
-      <% @label = "deny my wish to be frend"  %>
-      <%=	render	'delete_relationship'	%>
-    <% end %>
-  <% end %>
-</div>
+ <%=	render	'relationship_form'	%>
 <br>
