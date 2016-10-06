@@ -1,13 +1,12 @@
 <header class = "navbar">
   <div class="container">
-    <%= link_to "My_facebook", root_path, id: "logo" %>
+    <%= link_to "My facebook", root_path, id: "logo" %>
     <nav>
-      <ul class="nav  navbar-right">
+      <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
-        
-        <%= render 'layouts/log_out' %>
+        <%= render 'layouts/log_in_navigate' %>
         <% else %>
-        <%= render 'layouts/log_in' if @index %>
+        <%= render 'layouts/log_out_navigate' if @index %>
         <% end %>
       </ul>
     </nav>
