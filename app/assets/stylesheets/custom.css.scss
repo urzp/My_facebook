@@ -31,6 +31,13 @@
 
 }
 
+#menu{
+  color: #FFD700;
+  &:hover {
+    background-color: #0C3A9B;
+
+  }
+}
 
 #navigate {
   color: #FFD700;

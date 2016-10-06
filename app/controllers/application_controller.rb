@@ -17,7 +17,7 @@ protected
     if user_signed_in?
       events_user_id = ":event_user_#{current_user.id}"
       frends = current_user.frends.count
-      invites = current_user.current_inventes.count
+      invites = current_user.current_invites.count
       if cookies[events_user_id]
         cookies_frends = cookies[events_user_id][0]
         cookies_invites = cookies[events_user_id][2]
