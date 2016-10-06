@@ -89,7 +89,7 @@ require 'rails_helper'
         @user3.wish_frends << @user2
         @user4.wish_frends << @user2
         @user2.accept_inv(@user1)
-        expect(@user2.current_inventes.count).to eq(2)
+        expect(@user2.current_invites.count).to eq(2)
       end
 
     end
