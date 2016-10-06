@@ -1,5 +1,6 @@
 class RelationshipsController < ApplicationController
-
+  before_action :check_log_in
+  
   def	create
       @user	=	User.find(params[:wish_id])
       if params[:accept]

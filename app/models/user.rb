@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
     User.where("id IN (#{wishes})", user_id: self.id )
   end
 
-  def current_inventes
+  def current_invites
     inventes = "SELECT wish_id FROM relationships WHERE  inv_id = :user_id
             AND accepted = false"
     User.where("id IN (#{inventes})", user_id: self.id )
@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
 
   def relationship?(user)
     return :wish if self.current_wishes.any?{|u| u == user }
-    return :invit if self.current_inventes.any?{|u| u == user }
+    return :invit if self.current_invites.any?{|u| u == user }
     return :frend if self.frends.any?{|u| u == user }
     return nil
   end
