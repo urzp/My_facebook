@@ -9,8 +9,14 @@ Rails.application.routes.draw do
     end
   end
 
-  match 'users/:id/show',  to: 'users#show',            via: 'get' , as: :show_users
-  match 'users/index',  to: 'users#index',            via: 'get'
+
+  match 'users/show_new_friends',  to: 'users#show_new_friends',    via: 'get' , as: :show_users_new_friends
+  match 'users/show_invites',  to: 'users#show_invites',    via: 'get' , as: :show_users_invites
+  match 'users/show_wishes',  to: 'users#show_wishes',    via: 'get' , as: :show_users_wishes
+  match 'users/show_friends',  to: 'users#show_friends',    via: 'get' , as: :show_users_friends
+
+  match 'users/:id/show',  to: 'users#show',    via: 'get' , as: :show_users
+  match 'users/index',  to: 'users#index',     via: 'get'
 
   devise_for :users
   root 'welcome#index'

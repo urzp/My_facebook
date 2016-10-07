@@ -6,6 +6,30 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+
+
+
+  def show_new_friends
+    @users = current_user.new_friends
+    @users.map{|user| current_user.seen_friend(user) }
+    render 'index'
+  end
+
+  def show_friends
+    @users = current_user.frends
+    render 'index'
+  end
+
+  def show_invites
+    @users = current_user.current_invites
+    render 'index'
+  end
+
+  def show_wishes
+    @users = current_user.current_wishes
+    render 'index'
+  end
+
   def show
     @user = User.find(params[:id])
   end
