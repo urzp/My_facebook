@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+
+  resource :posts
+
   resource :relationships, only: [:create, :destroy]
 
   resource :users, only: [:edit, :update] do
