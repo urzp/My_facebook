@@ -1,7 +1,14 @@
 @import "bootstrap";
 @import "bootstrap-sprockets";
 
-
+.dropdown-toggle split {
+border: 2px solid red;
+border-radius: 10px;
+background-color: #DEB887;
+color:red;
+font-size: 8pt;
+padding: 5px;
+}
 
 .navbar {
   background-color: #0C3A9B;

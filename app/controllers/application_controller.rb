@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 before_action :configure_permitted_parameters, if: :devise_controller?
-before_action :check_new_event
+before_action :check_invites, :check_friends, :check_new_friends , if: :user_signed_in?
 
   protect_from_forgery with: :exception
 
@@ -12,24 +12,43 @@ protected
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name])
   end
 
+  def check_friends
+    @frends = current_user.frends.count
+  end
+
+  def check_new_friends
+    @new_frends = 0
+  end
+
+  def check_invites
+    @invites = current_user.current_invites.count
+  end
+
   def check_new_event
     #cookies[events_user_id] = [frends, invites]
+
     if user_signed_in?
       events_user_id = ":event_user_#{current_user.id}"
       frends = current_user.frends.count
       invites = current_user.current_invites.count
+      @frends = frends
+      @invites = invites
+
       if cookies[events_user_id]
         cookies_frends = cookies[events_user_id][0]
         cookies_invites = cookies[events_user_id][2]
-        if cookies_frends != frends.to_s || cookies_invites != invites.to_s
+        cookies_new_frends = cookies[events_user_id][4]
+        if cookies_frends.to_i != frends
+          cookies[events_user_id] = [frends, invites, frends.to_i - cookies_frends.to_i]
+        end
+
+        if cookies_new_frends != "0" || cookies_invites != invites.to_s
           flash[:success] = "you have a new event"
-          cookies[events_user_id] = [frends, invites]
-          return {frends: frends, invites: invites}
-        else
-          return false
+          @events = {frends: frends, invites: invites, new_frends: cookies_new_frends}
+          return true
         end
       else
-        cookies[events_user_id] = [frends, invites]
+        cookies[events_user_id] = [frends, invites, 0]
       end
     end
   end
