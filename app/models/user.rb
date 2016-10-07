@@ -22,6 +22,12 @@ class User < ActiveRecord::Base
     relation.save
   end
 
+  def seen_friend(user)
+    relation = self.reverse_relationships.find_by(wish_id: user.id)
+    relation.seen = true
+    relation.save
+  end
+
   def delete_inv(user)
     self.inv_frends.delete(user.id)
   end
@@ -53,6 +59,14 @@ class User < ActiveRecord::Base
     inventes = "SELECT wish_id FROM relationships WHERE  inv_id = :user_id
             AND accepted = false"
     User.where("id IN (#{inventes})", user_id: self.id )
+  end
+
+  def new_friends
+    friendships = "SELECT wish_id FROM relationships WHERE inv_id = :user_id
+            AND accepted = true AND seen = false"
+    reverse_friendships = "SELECT inv_id FROM relationships WHERE wish_id = :user_id
+            AND accepted = true AND seen = false"
+    User.where("id IN (#{friendships}) OR id IN (#{reverse_friendships})", user_id: self.id)
   end
 
   def relationship?(user)

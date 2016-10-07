@@ -25,7 +25,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" id = "menu">
               Friends  </b>
-            <% if @invites != 0 %>
+            <% if @invites != 0 || @new_frends != 0 %>
               <split>New</split>
             <% end %>
             </a>
@@ -33,11 +33,11 @@
               <li><%= link_to "Find Friends", users_index_path %></li>
               <li><%= link_to "My Friends: #{@frends} ", "#" %>  </li>
               <% if @new_frends != 0 %>
-              <li><%= link_to "New Friends: #{@events[:new_frends]}", "#",style: "color:red;" %> </li>
+              <li><%= link_to "New Friends: #{@new_frends}", "#",style: "color:red;" %> </li>
               <% end %>
               <li class="divider"></li>
               <li>
-                <%= link_to "My wish to be friends", "#" %>
+                <%= link_to "My wish to be friends: #{@wish_frends} ", "#" %>
                 <% if @invites != 0 %>
                 <li><%= link_to "Invites from users: #{@invites}", "#",style: "color:red;" %> </li>
                 <% end %>
