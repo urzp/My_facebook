@@ -1,6 +1,13 @@
  <% if user_signed_in? %>
+ <div style = "float:left;">
   <%= render 'layouts/profile' %>
+</div>
+<div>
   <%= render 'posts/form_post' %>
+</div>
+<div>
+  <%= render 'posts/posts' %>
+</div>
 <% else %>
 <div class = "SignUp">
       <%= render 'layouts/sign_up' %>

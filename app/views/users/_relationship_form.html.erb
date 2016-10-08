@@ -1,3 +1,4 @@
+<% if current_user != @user %>
 <div	id="relationship_form">
   <% @relationship = current_user.relationship?(@user) %>
   <% if @relationship == nil %>
@@ -8,7 +9,7 @@
    <div>
      <% @label = "accept friend"  %>
      <div><%=	render	'accept_friend'	%></div>
-     <% @label = "deny friend"  %>
+     <% @label = "deny friend"  %><br>
      <div><%=	render	'delete_relationship'	%></div>
    </div>
    <% end %>
@@ -22,3 +23,4 @@
    <% end %>
  <% end %>
 </div>
+<% end %>

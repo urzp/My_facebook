@@ -2,9 +2,9 @@
 
   <div class="field">
 
-    <%= f.label "Title"  %>
-    <%= f.text_field :title  %>
-    <%= f.text_area :content, size: "60x12", placeholder: "Compose new post..." %>
+    <%= f.label "Title"  %><br>
+    <%= f.text_field :title , size: "60x" %><br><br>
+    <%= f.text_area :content, size: "60x12", placeholder: "Compose new post..." %><br>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+<%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
