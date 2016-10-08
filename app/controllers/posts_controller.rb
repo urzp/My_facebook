@@ -9,7 +9,6 @@ class PostsController < ApplicationController
     end
 
     def destroy
-
       if current_user.posts.find_by(id: params[:format])
         current_user.posts.find_by(id: params[:format]).destroy
         flash[:success] = "Micropost deleted"
@@ -20,10 +19,30 @@ class PostsController < ApplicationController
       end
     end
 
+    def edit
+      if current_user.posts.find_by(id: params[:format])
+        @post = current_user.posts.find_by(id: params[:format])
+      else
+        flash[:danger] = "You can't edit this post"
+        redirect_to  root_url
+      end
+    end
+
+    def update
+      id = params[:post][:id].to_s
+      if current_user.posts.find_by(id: id).update_attributes(post_params)
+          flash[:success] = "Post updated"
+          redirect_to  root_url
+      else
+        flash[:danger] = "You can't edit this post"
+        redirect_to  root_url
+      end
+    end
+
 private
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:id, :title, :content)
   end
 
 end

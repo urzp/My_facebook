@@ -1,0 +1,15 @@
+
+<h3> Edit post:<br> <%= @post.title %></h3>
+<%= form_for(@post, url: posts_path) do |f| %>
+
+  <div class="field">
+    <%= f.hidden_field :id   %>
+    <%= f.label "Title"  %>
+    <%= f.text_field :title , size: "60x"%>
+    <br>
+    <%= f.label "Content"  %>
+    <br>
+    <%= f.text_area :content, size: "60x12", placeholder: "Compose new post..." %><br>
+  </div>
+<%= f.submit "Update", class: "btn btn-primary" %>
+<% end %>
