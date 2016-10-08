@@ -8,6 +8,18 @@ class PostsController < ApplicationController
       redirect_to root_path
     end
 
+    def destroy
+
+      if current_user.posts.find_by(id: params[:format])
+        current_user.posts.find_by(id: params[:format]).destroy
+        flash[:success] = "Micropost deleted"
+        redirect_to  root_url
+      else
+        flash[:danger] = "You can't delete this post"
+        redirect_to  root_url
+      end
+    end
+
 private
 
   def post_params

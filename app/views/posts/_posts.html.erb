@@ -1,8 +1,15 @@
+
 <h3> Posts </h3>
 <%  @posts.each do |post| %>
 <div style = "width:300p; margin: 10px 200px 10px 200px;">
   <h4> <%= post.title %> </h4>
   <p> Created at <%= post.date %> </p>
   <p style = "text-align:left;"> <%= post.content %> </p>
+  <% if current_user == post.user %>
+    <%= link_to "edit |", posts_path %>
+
+   <%= link_to "delete", posts_path(post), method: :delete,
+                                   data: { confirm: "You sure?" } %>
+  <% end %>
 </div>
 <% end %>
