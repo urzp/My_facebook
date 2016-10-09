@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
+  match 'likes',  to: 'likes#add_delete',    via: 'get', as: :likes_add_delete
 
   match 'users/show_new_friends',  to: 'users#show_new_friends',    via: 'get' , as: :show_users_new_friends
   match 'users/show_invites',  to: 'users#show_invites',    via: 'get' , as: :show_users_invites

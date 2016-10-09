@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 before_action :configure_permitted_parameters, if: :devise_controller?
 before_action :check_friends,  if: :user_signed_in?
+before_action :store_location, except: [ :add_delete]
 
   protect_from_forgery with: :exception
 
@@ -35,6 +36,14 @@ protected
     end
   end
 
+  def	redirect_back_or(default)
+    redirect_to(session[:return_to]	||	default)
+    session.delete(:return_to)
+  end
+
+  def	store_location
+    session[:return_to]	=	request.url	if	request.get?
+  end
 
 
 end

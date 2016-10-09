@@ -93,10 +93,7 @@ require 'rails_helper'
       end
 
       it "shoud add likes" do
-        post = Post.new(title: "test", content: "test")
-        @user1.posts << post
-        like = Like.new
-        like.user = @user1
+
       end
 
     end
