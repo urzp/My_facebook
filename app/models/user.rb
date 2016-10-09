@@ -16,7 +16,10 @@ class User < ActiveRecord::Base
   has_many	:reverse_relationships,	foreign_key: "inv_id",
                       class_name: "Relationship",  dependent:			:destroy
 
-  has_many :posts                    
+  has_many :posts
+
+  has_many :likes
+  has_many :posts_likes, through: :likes, source: :post
 
   def accept_inv(user)
     relation = self.reverse_relationships.find_by(wish_id: user.id)

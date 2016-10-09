@@ -4,4 +4,7 @@ class Post < ActiveRecord::Base
   validates :title, presence: true, length: { maximum: 140 }
   validates :content, presence: true
   validates :user_id, presence: true
+
+  has_many :likes
+  has_many :users_likes, through: :likes, source: :user
 end
