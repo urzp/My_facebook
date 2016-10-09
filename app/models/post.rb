@@ -7,4 +7,6 @@ class Post < ActiveRecord::Base
 
   has_many :likes
   has_many :users_likes, through: :likes, source: :user
+
+  has_many :comments
 end

@@ -92,8 +92,20 @@ require 'rails_helper'
         expect(@user2.current_invites.count).to eq(2)
       end
 
-      it "shoud add likes" do
+      it "shoud test assotiation" do
+        user = User.first
+        post = Post.first
+        comment = Comment.new
+        user.comments << comment
+        expect(comment.user).to eq (user)
+      end
 
+      it "shoud test assotiation" do
+        user = User.first
+        post = Post.create!(title: "test", content: "test", user: user)
+        comment = Comment.new
+        post.comments << comment
+        expect(comment.post).to eq (post)
       end
 
     end

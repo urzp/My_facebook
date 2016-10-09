@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :posts_likes, through: :likes, source: :post
 
+  has_many :comments
+
   def accept_inv(user)
     relation = self.reverse_relationships.find_by(wish_id: user.id)
     relation.accepted = true
