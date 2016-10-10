@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 before_action :configure_permitted_parameters, if: :devise_controller?
 before_action :check_friends,  if: :user_signed_in?
-before_action :store_location, except: [ :add_delete]
+before_action :store_location, except: [ :add_delete, CommentsController]
 
   protect_from_forgery with: :exception
 
