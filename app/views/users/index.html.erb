@@ -5,9 +5,10 @@
   <br>
 <div>
      <%= image_tag user.avatar.url(:thumb) %>
-      <%= "#{user.first_name} #{user.last_name}" %>
+      <%= link_to "#{user.first_name} #{user.last_name}" , show_users_path(user) %>
       <%= user.email %>
-      <%= link_to "Show", show_users_path(user)  %>
+      <% @user = user %>
+      <%= render 'users/relationship_form'  %>
 
 </div>
 

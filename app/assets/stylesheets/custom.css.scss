@@ -69,8 +69,27 @@ padding: 5px;
     color: #FFD700;
     text-decoration: none;
   }
+}
 
+#logo_name {
+  color: #FFD700;
+  position: absolute;
+  left: 400px;
+  top: 35px;
+  font-size: 15px;
+  padding-top: 25px;
+  font-weight: bold;
+  margin-left: 20px;
+  float: left;
+  &:hover {
+    color: #FFD700;
+    text-decoration: none;
+  }
+}
 
+.form-comment {
+  margin-left: 200px;
+  text-align: left;
 }
 
 .senter {

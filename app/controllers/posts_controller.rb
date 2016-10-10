@@ -1,5 +1,15 @@
 class PostsController < ApplicationController
 
+    def show
+      friends = current_user.frends
+      friends = friends << current_user
+      sql = ""
+      friends.each do |user|
+        sql = sql + "user_id = #{user.id} OR "
+      end
+      @posts = Post.where(sql[0..-5])
+      
+    end
 
     def create
       @post = current_user.posts.build(post_params)

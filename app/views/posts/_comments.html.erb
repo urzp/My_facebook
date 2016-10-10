@@ -1,16 +1,18 @@
+<h5 class="form-comment">Comments </h5>
 <% post.comments.each do |comment| %>
 <div style = "text-align: left; margin-left: 200px;">
-  <%= link_to "#{comment.user.first_name}: ", "#" %>
+  <%= link_to "#{comment.user.first_name}: ", show_users_path(comment.user) %>
   <%= comment.content %>
 </div>
 <% end %>
 
-
+<br>
 <%= form_for( Comment.new) do |f| %>
-  <div class="field">
-    <%= f.label current_user.first_name  %>
+  <div class="field form-comment">
+    <%= f.label current_user.first_name , id: "form-comment" %>
     <%= f.text_field :content , size: "60x", placeholder: "Compose you comment..." %><br>
     <%= hidden_field_tag :post_id, post.id %>
+    <%= f.submit "Puts your comment.. ", class: "btn btn-primary" %>
   </div>
-<%= f.submit "Post", class: "btn btn-primary" %>
+
 <% end %>

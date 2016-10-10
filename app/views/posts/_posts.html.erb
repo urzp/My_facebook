@@ -3,7 +3,8 @@
 <%  @posts.each do |post| %>
 <div style = "width:300p; margin: 10px 200px 10px 200px;">
   <h4> <%= post.title %> </h4>
-  <p> Created at <%= post.date %> </p>
+  <p class="form-comment" > Created at <%= post.date %> </p>
+  <p class="form-comment" > Autor: <%= "#{post.user.first_name} #{post.user.last_name}" %> </p>
   <p style = "text-align:left;"> <%= post.content %> </p>
   <br>
   <%= link_to "likes #{ post.likes.count }", likes_add_delete_path(post) %>

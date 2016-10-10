@@ -1,6 +1,10 @@
 <header class = "navbar">
+  <% if user_signed_in? %>
+    <%= link_to "#{current_user.first_name} #{current_user.last_name}", root_path, id: "logo_name" %>
+  <% end %>
   <div class="container">
     <%= link_to "My facebook", root_path, id: "logo" %>
+
     <nav>
       <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
