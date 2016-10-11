@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem "figaro"
+
+gem 'omniauth-facebook'
+
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl'
