@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     end
   end
 
+  match 'post/id',  to: 'posts#show_id',    via: 'get', as: :post_show_id
+
   match 'likes',  to: 'likes#add_delete',    via: 'get', as: :likes_add_delete
 
   match 'users/show_new_friends',  to: 'users#show_new_friends',    via: 'get' , as: :show_users_new_friends

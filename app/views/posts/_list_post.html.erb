@@ -1,0 +1,7 @@
+
+<ul style = "text-align: left; margin: 10px 100px 10px 300px">
+<h3> Posts </h3>
+<%  posts.each do |post| %>
+  <li> <%= link_to post.title, post_show_id_path(post.id) %> </li>
+<% end %>
+</ul>

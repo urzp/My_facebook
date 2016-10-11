@@ -1,5 +1,12 @@
 class PostsController < ApplicationController
 
+
+    def show_id
+      @posts = []
+      @posts << Post.find(params[:format])
+      render '_posts'
+    end
+
     def show
       friends = current_user.frends
       friends = friends << current_user
@@ -8,7 +15,7 @@ class PostsController < ApplicationController
         sql = sql + "user_id = #{user.id} OR "
       end
       @posts = Post.where(sql[0..-5])
-      
+
     end
 
     def create
