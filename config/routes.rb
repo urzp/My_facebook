@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+
+  #resources :sessions, only: [:create, :destroy]
+  #match '/auth/:provider/callback' , to: 'sessions#create',    via: 'get'
+
+  #match 'session_fasebook', to: 'sessions#create',    via: 'get'
+
+  #devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
   resources :comments
 
   resource :posts
@@ -25,7 +33,7 @@ Rails.application.routes.draw do
   match 'users/:id/show',  to: 'users#show',    via: 'get' , as: :show_users
   match 'users/index',  to: 'users#index',     via: 'get'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
